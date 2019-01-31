@@ -25,7 +25,6 @@ const printSettings = {
     setupCostPerProject: 15
   },
   "Large Format Prints": {
-    maxWidth: 60,
     minWidth: 36,
     minHeight: 36,
     setupCostPerProject: 15
