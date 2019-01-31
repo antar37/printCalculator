@@ -217,7 +217,7 @@ function addToFinalQuote() {
     $(runningTotalText).fadeIn();
   }
 
-  runningTotalNumber.innerHTML = Number(runningTotal.reduce((a, b) => a + b, 0).toFixed(2));
+  runningTotalNumber.innerHTML = runningTotal.reduce((a, b) => a + b, 0).toFixed(2);
   textAreaWrapper.classList.add('textareawrapper');
   $(textAreaWrapper).attr('data-totalWithSetupFee', totalToAdd);
   closeBtn.classList.add('close');
