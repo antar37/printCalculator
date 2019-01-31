@@ -200,7 +200,7 @@ function calculateTotal(width = 0, height = 0){
     activeForm.querySelector(".printareas").textContent = printAreas.split("_")[0];
   } else {
     squareFootage = Number((amount * (width * height)) * 0.0069444444444444).toFixed(1); // the long number is to convert from square inches to square feet
-    total = Number(squareFootage * cost).toFixed(2);
+    total = Number((squareFootage * cost) + setupFee).toFixed(2);
     activeForm.querySelector(".squarefootage").textContent = squareFootage;
   }
   //Update the textContents
