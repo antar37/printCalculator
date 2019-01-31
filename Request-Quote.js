@@ -85,6 +85,8 @@ tabsMenu.addEventListener("click", () => {setTimeout(updateTab, 500)});
 // HELPERS ============================
 
 function setMaxMin(maxWidth, minWidth, maxHeight, minHeight){
+  console.log("setMaxMin ran with values = ", maxWidth, minWidth, maxHeight, minHeight);
+
   if(maxWidth && parseFloat(activeForm.querySelector('.width').value) > maxWidth){
     activeForm.querySelector('.width').value = maxWidth;
   }
@@ -100,6 +102,7 @@ function setMaxMin(maxWidth, minWidth, maxHeight, minHeight){
 }
 
 function setMaxMinAttrs(maxWidth, minWidth, maxHeight, minHeight){
+  console.log("setMaxMinAttrs ran with values = ", maxWidth, minWidth, maxHeight, minHeight);
   if(maxWidth) {
     activeForm.querySelector('.width').setAttribute("max", maxWidth);
   }
