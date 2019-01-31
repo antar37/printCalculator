@@ -187,15 +187,15 @@ function updateForm() {
     width = Number(activeForm.querySelector('.width').value);
     height = Number(activeForm.querySelector('.height').value);
   }
-  console.log("updateForm. Width: "+width+". Height: "+height);
   calculateTotal(width, height);
 }
 
 function calculateTotal(width = 0, height = 0){
   console.log("calculateTotal. Width: "+width+". Height: "+height);
+  const setupFee = activeSettings.setupCostPerProject ? activeSettings.setupCostPerProject : (activeSettings.setupCostPerItem * amount)
   if(printedShirtsSelected){
     cost = Number(printAreas.split("_")[1]) ? Number(printAreas.split("_")[1]) : 0;
-    total = (cost * amount);
+    total = ((cost * amount) + setupFee);
     activeForm.querySelector(".printareas").textContent = printAreas.split("_")[0];
   } else {
     squareFootage = Number((amount * (width * height)) * 0.0069444444444444).toFixed(1); // the long number is to convert from square inches to square feet
@@ -210,16 +210,15 @@ function addToFinalQuote() {
   const textAreaWrapper = document.createElement("div");
   const closeBtn = document.createElement("div");
   const textArea = document.createElement("textarea");
-  const setupFee = printSettings[activeTab.textContent].setupCostPerProject ? printSettings[activeTab.textContent].setupCostPerProject : (printSettings[activeTab.textContent].setupCostPerItem * amount)
-  const totalWithSetupFee = Math.round((Number(total) + setupFee) * 100) / 100;
-  runningTotal.push(totalWithSetupFee);
+  const totalToAdd = Math.round(Number(total) * 100) / 100;
+  runningTotal.push(totalToAdd);
   if( $(runningTotalText).css('display') != 'block') {
     $(runningTotalText).fadeIn();
   }
 
   runningTotalNumber.innerHTML = runningTotal.reduce((a, b) => a + b, 0);
   textAreaWrapper.classList.add('textareawrapper');
-  $(textAreaWrapper).attr('data-totalWithSetupFee', totalWithSetupFee);
+  $(textAreaWrapper).attr('data-totalWithSetupFee', totalToAdd);
   closeBtn.classList.add('close');
   closeBtn.innerHTML = '✖';
   textArea.setAttribute("name", activeTab.textContent);
@@ -231,7 +230,7 @@ function addToFinalQuote() {
       Amount: ${amount}
       Print Areas: ${printAreas.split("_")[0]}
       Setup Cost: $${setupFee}
-      Total Price: $${totalWithSetupFee}`;
+      Total Price: $${totalToAdd}`;
 
   } else {
     textArea.textContent = `
@@ -241,7 +240,7 @@ function addToFinalQuote() {
       Width: ${height}
       Height: ${width}
       Setup Cost: $${setupFee}
-      Total Price: $${totalWithSetupFee}`;
+      Total Price: $${totalToAdd}`;
   }
   textArea.rows = 10;
   textArea.cols = 30;
@@ -257,7 +256,6 @@ function addToFinalQuote() {
 function activateCloseBtns(){
   let closeBtns = finalQuote.querySelectorAll('.close');
   closeBtns.forEach( (closeBtn) => {
-    console.log(closeBtn);
     closeBtn.addEventListener('click', (e) => {
       runningTotal.splice(runningTotal.indexOf(e.target.parentNode.dataset.totalWithSetupFee), 1);
       runningTotalNumber.innerHTML = runningTotal.reduce((a, b) => a + b, 0);
