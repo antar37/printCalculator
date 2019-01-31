@@ -178,7 +178,7 @@ function updateForm() {
     // Set the max size to the max specified in printSettings object
     // Checks for existence of a setting, and checks if the size exceeds the limit put by the object
     // Put it on a timer to give the input a chance to put in a number
-    setTimeout(setMaxMin(activeSettings.maxWidth, activeSettings.minWidth, activeSettings.maxHeight, activeSettings.minHeight), 2000);
+    setTimeout(function(){ setMaxMin(activeSettings.maxWidth, activeSettings.minWidth, activeSettings.maxHeight, activeSettings.minHeight); }, 2000);
     
     width = Number(activeForm.querySelector('.width').value);
     height = Number(activeForm.querySelector('.height').value);
