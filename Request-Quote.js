@@ -99,6 +99,9 @@ function setMaxMin(maxWidth, minWidth, maxHeight, minHeight){
   if(parseFloat(activeForm.querySelector('.height').value) < minHeight){
     activeForm.querySelector('.height').value = minHeight;
   }
+
+  // Since the listener is on input, this is bypassing inputs. Need to call updateForm manually
+  updateForm();
 }
 
 function setMaxMinAttrs(maxWidth, minWidth, maxHeight, minHeight){
