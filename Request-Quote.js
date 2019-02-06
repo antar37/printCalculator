@@ -193,7 +193,13 @@ function updateForm() {
 
 function calculateTotal(width = 0, height = 0){
   console.log("calculateTotal. Width: "+width+". Height: "+height);
-  setupFee = activeSettings.setupCostPerProject ? (activeSettings.setupCostPerProject || activeSettings.setupCostPerProject == 0) : (activeSettings.setupCostPerItem * amount)
+  // Set Setup Fee
+  if(activeSettings.setupCostPerProject || activeSettings.setupCostPerProject == 0){
+    setupFee = activeSettings.setupCostPerProject;
+  } else {
+    setupFee = (activeSettings.setupCostPerItem * amount)
+  }
+
   if(printedShirtsSelected){
     cost = Number(printAreas.split("_")[1]) ? Number(printAreas.split("_")[1]) : 0;
     total = ((cost * amount) + setupFee);
