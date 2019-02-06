@@ -198,14 +198,12 @@ function calculateTotal(width = 0, height = 0){
     cost = Number(printAreas.split("_")[1]) ? Number(printAreas.split("_")[1]) : 0;
     total = ((cost * amount) + setupFee);
     activeForm.querySelector(".printareas").textContent = printAreas.split("_")[0];
-  } else if(activeForm.querySelector('.w-radio')){
-    if($("input[name=size]:checked").val() !== "custom"){
+  } else if(activeForm.querySelector('.w-radio') && $("input[name=size]:checked").val() !== "custom"){
       // If it's a radio button
       squareFootage = Number((amount * (width * height)) * 0.0069444444444444).toFixed(1); // the long number is to convert from square inches to square feet
       activeForm.querySelector(".squarefootage").textContent = squareFootage;
       cost = $("input[name=size]:checked")[0].dataset.price;
       total = ((cost * amount) + setupFee);
-    }
   } else {
     squareFootage = Number((amount * (width * height)) * 0.0069444444444444).toFixed(1); // the long number is to convert from square inches to square feet
     total = Number((squareFootage * cost) + setupFee).toFixed(2);
