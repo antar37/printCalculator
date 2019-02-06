@@ -201,6 +201,8 @@ function calculateTotal(width = 0, height = 0){
   } else if(activeForm.querySelector('.w-radio')){
     if($("input[name=size]:checked").val() !== "custom"){
       // If it's a radio button
+      squareFootage = Number((amount * (width * height)) * 0.0069444444444444).toFixed(1); // the long number is to convert from square inches to square feet
+      activeForm.querySelector(".squarefootage").textContent = squareFootage;
       cost = $("input[name=size]:checked")[0].dataset.price;
       total = ((cost * amount) + setupFee);
     }
