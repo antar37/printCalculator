@@ -36,7 +36,7 @@ const printSettings = {
     setupCostPerProject: 15
   },
   "Printed Shirts": {
-    setupCostPerProject: 15
+    setupCostPerProject: 0
   },
   "Mounted Posters": {
     maxWidth: 48,
