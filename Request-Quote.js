@@ -236,6 +236,7 @@ function addToFinalQuote() {
       Category: ${activeTab.textContent}
       Amount: ${amount}
       Print Areas: ${printAreas.split("_")[0]}
+      Order Price: ${totalToAdd}
       `;
 
   } else {
@@ -245,6 +246,7 @@ function addToFinalQuote() {
       Square Footage: ${squareFootage}
       Width: ${height}
       Height: ${width}
+      Order Price: ${totalToAdd}
       `;
   }
   textArea.rows = 10;
