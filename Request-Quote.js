@@ -193,7 +193,7 @@ function updateForm() {
 
 function calculateTotal(width = 0, height = 0){
   console.log("calculateTotal. Width: "+width+". Height: "+height);
-  setupFee = activeSettings.setupCostPerProject ? activeSettings.setupCostPerProject : (activeSettings.setupCostPerItem * amount)
+  setupFee = activeSettings.setupCostPerProject ? (activeSettings.setupCostPerProject || activeSettings.setupCostPerProject == 0) : (activeSettings.setupCostPerItem * amount)
   if(printedShirtsSelected){
     cost = Number(printAreas.split("_")[1]) ? Number(printAreas.split("_")[1]) : 0;
     total = ((cost * amount) + setupFee);
