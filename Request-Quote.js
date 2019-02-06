@@ -198,6 +198,12 @@ function calculateTotal(width = 0, height = 0){
     cost = Number(printAreas.split("_")[1]) ? Number(printAreas.split("_")[1]) : 0;
     total = ((cost * amount) + setupFee);
     activeForm.querySelector(".printareas").textContent = printAreas.split("_")[0];
+  } else if(activeForm.querySelector('.w-radio')){
+    if($("input[name=size]:checked").val() !== "custom"){
+      // If it's a radio button
+      cost = $("input[name=size]:checked")[0].dataset.price;
+      total = ((cost * amount) + setupFee);
+    }
   } else {
     squareFootage = Number((amount * (width * height)) * 0.0069444444444444).toFixed(1); // the long number is to convert from square inches to square feet
     total = Number((squareFootage * cost) + setupFee).toFixed(2);
@@ -230,8 +236,7 @@ function addToFinalQuote() {
       Category: ${activeTab.textContent}
       Amount: ${amount}
       Print Areas: ${printAreas.split("_")[0]}
-      Setup Cost: $${active}
-      Total Price: $${totalToAdd}`;
+      `;
 
   } else {
     textArea.textContent = `
@@ -240,8 +245,7 @@ function addToFinalQuote() {
       Square Footage: ${squareFootage}
       Width: ${height}
       Height: ${width}
-      Setup Cost: $${setupFee}
-      Total Price: $${totalToAdd}`;
+      `;
   }
   textArea.rows = 10;
   textArea.cols = 30;
