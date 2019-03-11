@@ -126,6 +126,7 @@ function updateTab(){
   width = 0;
   height = 0;
   squareFootage = 0;
+  total = 0;
 
   console.log("updateTab Ran "+width+" "+height);
   activeTab = tabsMenu.querySelector("a.w--current");
