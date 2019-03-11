@@ -130,7 +130,7 @@ function updateTab(){
   // Reset width, height and square footage
   width = parseFloat(activeForm.querySelector('.width').value);
   height = parseFloat(activeForm.querySelector('.height').value);
-  squareFootage = 0;
+  squareFootage = parseFloat(activeForm.querySelector(".squarefootage"));
   total = 0;
   
   console.log("updateTab Ran "+width+" "+height);
