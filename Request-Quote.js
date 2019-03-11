@@ -122,6 +122,10 @@ function setMaxMinAttrs(maxWidth, minWidth, maxHeight, minHeight){
 
 // FUNCTIONS ==========================
 function updateTab(){
+  // Reset width, height and square footage
+  width = 0;
+  height = 0;
+  squareFootage = 0;
 
   console.log("updateTab Ran "+width+" "+height);
   activeTab = tabsMenu.querySelector("a.w--current");
