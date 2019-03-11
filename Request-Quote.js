@@ -131,7 +131,8 @@ function updateTab(){
   width = parseFloat(activeForm.querySelector('.width').value);
   height = parseFloat(activeForm.querySelector('.height').value);
   squareFootage = parseFloat(activeForm.querySelector(".squarefootage").textContent);
-
+  total = 0;
+  
   updateForm();
   console.log("updateTab Ran "+width+" "+height);
   
@@ -262,8 +263,8 @@ function addToFinalQuote() {
       Category: ${activeTab.textContent}
       Amount: ${amount}
       Square Footage: ${squareFootage}
-      Width: ${height}
-      Height: ${width}
+      Length: ${height}
+      Width: ${width}
       Order Price: ${totalToAdd}
       `;
   }
