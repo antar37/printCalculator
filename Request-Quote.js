@@ -128,11 +128,11 @@ function updateTab(){
   activeSettings = printSettings[activeTab.textContent];
   
   // Reset width, height and square footage
-  width = parseFloat(activeForm.querySelector('.width').value);
-  height = parseFloat(activeForm.querySelector('.height').value);
-  squareFootage = parseFloat(activeForm.querySelector(".squarefootage").textContent);
-  total = 0;
-  
+  //width = parseFloat(activeForm.querySelector('.width').value);
+  //height = parseFloat(activeForm.querySelector('.height').value);
+  //squareFootage = parseFloat(activeForm.querySelector(".squarefootage").textContent);
+  //total = 0;
+  updateForm();
   console.log("updateTab Ran "+width+" "+height);
   
   // Check to see if printed Shirts are selected
