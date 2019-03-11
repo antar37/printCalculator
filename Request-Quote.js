@@ -122,17 +122,18 @@ function setMaxMinAttrs(maxWidth, minWidth, maxHeight, minHeight){
 
 // FUNCTIONS ==========================
 function updateTab(){
-  // Reset width, height and square footage
-  width = 0;
-  height = 0;
-  squareFootage = 0;
-  total = 0;
-
+  
   console.log("updateTab Ran "+width+" "+height);
   activeTab = tabsMenu.querySelector("a.w--current");
   activeForm = forms.querySelector("div.w--tab-active");
   activeSettings = printSettings[activeTab.textContent];
-
+  
+  // Reset width, height and square footage
+  width = activeForm.querySelector('.width').value;
+  height = activeForm.querySelector('.height').value;
+  squareFootage = 0;
+  total = 0;
+  
   // Check to see if printed Shirts are selected
   if(activeForm.querySelector('select.printareasdropdown')){
     printedShirtsSelected = true;
