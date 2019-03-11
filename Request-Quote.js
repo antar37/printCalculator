@@ -123,6 +123,8 @@ function setMaxMinAttrs(maxWidth, minWidth, maxHeight, minHeight){
 // FUNCTIONS ==========================
 function updateTab(){
   console.log("updateTab Ran");
+  width = 0;
+  height = 0;
   activeTab = tabsMenu.querySelector("a.w--current");
   activeForm = forms.querySelector("div.w--tab-active");
   activeSettings = printSettings[activeTab.textContent];
