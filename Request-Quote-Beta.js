@@ -234,10 +234,6 @@ function calculateTotal(width = 0, height = 0){
 
 function addToFinalQuote() {
 
-  // Remove empty cart alert
-  if(!$(".quote-text-area")){
-    $("empty-cart").hide();
-  }
   const textAreaWrapper = document.createElement("div");
   const closeBtn = document.createElement("div");
   const textArea = document.createElement("textarea");
@@ -253,18 +249,18 @@ function addToFinalQuote() {
   closeBtn.classList.add('close');
   closeBtn.innerHTML = '✖';
   textArea.setAttribute("name", activeTab.textContent);
-
+  
   if(printedShirtsSelected){
     
     textArea.textContent = `
-      Category: ${activeTab.textContent}
-      Amount: ${amount}
-      Print Areas: ${printAreas.split("_")[0]}
+    Category: ${activeTab.textContent}
+    Amount: ${amount}
+    Print Areas: ${printAreas.split("_")[0]}
       Order Price: ${totalToAdd}
       `;
-
-  } else {
-    textArea.textContent = `
+      
+    } else {
+      textArea.textContent = `
       Category: ${activeTab.textContent}
       Amount: ${amount}
       Square Footage: ${squareFootage}
@@ -282,6 +278,10 @@ function addToFinalQuote() {
   textAreaWrapper.appendChild(textArea);
   
   activateCloseBtns();
+  // Remove empty cart alert
+  if($(".textareawrapper")){
+    $(".empty-cart").hide();
+  }
 };
 
 function activateCloseBtns(){
@@ -291,6 +291,10 @@ function activateCloseBtns(){
       runningTotal.splice(runningTotal.indexOf(e.target.parentNode.dataset.totalWithSetupFee), 1);
       runningTotalNumber.innerHTML = runningTotal.reduce((a, b) => a + b, 0);
       e.target.parentNode.remove();
+
+      if(!$(".textareawrapper")){
+        $(".empty-cart").show();
+      }
     });
   });
 };
