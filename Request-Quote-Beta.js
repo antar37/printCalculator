@@ -279,7 +279,7 @@ function addToFinalQuote() {
   
   activateCloseBtns();
   // Remove empty cart alert
-  if($(".textareawrapper")){
+  if($(".textareawrapper").length){
     $(".empty-cart").hide();
   }
 };
@@ -292,7 +292,7 @@ function activateCloseBtns(){
       runningTotalNumber.innerHTML = runningTotal.reduce((a, b) => a + b, 0);
       e.target.parentNode.remove();
 
-      if(!$(".textareawrapper")){
+      if(!$(".textareawrapper").length){
         $(".empty-cart").show();
       }
     });
