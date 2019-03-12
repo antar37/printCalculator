@@ -280,7 +280,7 @@ function addToFinalQuote() {
   activateCloseBtns();
   // Remove empty cart alert
   if($(".textareawrapper")){
-    $(".empty-cart").show();
+    $(".empty-cart").hide();
   }
 };
 
