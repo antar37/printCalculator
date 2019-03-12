@@ -129,11 +129,10 @@ function updateTab(){
   
   // Reset width, height and square footage
   width = parseFloat(activeForm.querySelector('.width').value);
-  height = parseFloat(activeForm.querySelector('.height').value);
+  height = parseFloat(activeForm.querySelector('.height').value);\
   squareFootage = parseFloat(activeForm.querySelector(".squarefootage").textContent);
   total = 0;
 
-  updateForm();
   console.log("updateTab Ran "+width+" "+height);
   
   // Check to see if printed Shirts are selected
@@ -144,7 +143,7 @@ function updateTab(){
     activeForm.querySelector('.width')
     setMaxMinAttrs(activeSettings.maxWidth, activeSettings.minWidth, activeSettings.maxHeight, activeSettings.minHeight)
   }  
-
+  
   // Make the number forms actual numbers
   activeForm.querySelector('.amount').type = "number";  
   activeForm.querySelector('.amount').setAttribute("min", 0);
@@ -158,12 +157,13 @@ function updateTab(){
   else {
     cost = parseFloat(activeForm.querySelector('.squarefootage').dataset.cost);
   }
-
+  
   // If there are radio buttons in the active Form
   if(activeForm.querySelector('.w-radio')){
     // Hide width and height inputs
     $('.width-height-container').hide();
   }
+  updateForm();
 }
 
 function housekeeping(){
