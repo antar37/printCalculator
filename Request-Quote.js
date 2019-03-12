@@ -132,7 +132,7 @@ function updateTab(){
   height = parseFloat(activeForm.querySelector('.height').value);
   squareFootage = parseFloat(activeForm.querySelector(".squarefootage").textContent);
   total = 0;
-  
+
   updateForm();
   console.log("updateTab Ran "+width+" "+height);
   
@@ -201,7 +201,7 @@ function updateForm() {
 }
 
 function calculateTotal(width = 0, height = 0){
-  console.log("calculateTotal. Width: "+width+". Height: "+height);
+  console.log("calculateTotal. Width: "+width+". Height: "+height+ "cost: "+cost);
   // Set Setup Fee
   if(activeSettings.setupCostPerProject || activeSettings.setupCostPerProject == 0){
     setupFee = activeSettings.setupCostPerProject;
