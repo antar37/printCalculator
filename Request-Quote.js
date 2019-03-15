@@ -296,7 +296,3 @@ function activateCloseBtns(){
    });
  });
 };
-
-function setHeight
-
-function setWidth
