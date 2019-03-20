@@ -81,6 +81,7 @@ let runningTotalText = document.querySelector("#runningTotalText");
 forms.addEventListener("input", updateForm);
 addToQuote.addEventListener("click", addToFinalQuote);
 tabsMenu.addEventListener("click", () => {setTimeout(updateTab, 500)});
+document.querySelector("#dismissAlert").addEventListener("click", () => {$(".fullscreen-alert").fadeOut();})
 
 // HELPERS ============================
 
@@ -228,59 +229,68 @@ function calculateTotal(width = 0, height = 0){
  }
  //Update the textContents
  activeForm.querySelector(".total").textContent = total;
+
 }
 
 function addToFinalQuote() {
+  if(total > 0) {
+    const textAreaWrapper = document.createElement("div");
+    const closeBtn = document.createElement("div");
+    const textArea = document.createElement("textarea");
+    const totalToAdd = Math.round(Number(total) * 100) / 100;
+    runningTotal.push(totalToAdd);
+    if( $(runningTotalText).css('display') != 'block') {
+      $(runningTotalText).fadeIn();
+    }
 
- const textAreaWrapper = document.createElement("div");
- const closeBtn = document.createElement("div");
- const textArea = document.createElement("textarea");
- const totalToAdd = Math.round(Number(total) * 100) / 100;
- runningTotal.push(totalToAdd);
- if( $(runningTotalText).css('display') != 'block') {
-   $(runningTotalText).fadeIn();
- }
+    runningTotalNumber.innerHTML = runningTotal.reduce((a, b) => a + b, 0).toFixed(2);
+    textAreaWrapper.classList.add('textareawrapper');
+    $(textAreaWrapper).attr('data-totalWithSetupFee', totalToAdd);
+    closeBtn.classList.add('close');
+    closeBtn.innerHTML = '✖';
+    textArea.setAttribute("name", activeTab.textContent);
+    
+    if(printedShirtsSelected){
+      
+      textArea.textContent = `
+      Category: ${activeTab.textContent}
+      Amount: ${amount}
+      Print Areas: ${printAreas.split("_")[0]}
+        Order Price: ${totalToAdd}
+        `;
+        
+      } else {
+        textArea.textContent = `
+        Category: ${activeTab.textContent}
+        Amount: ${amount}
+        Square Footage: ${squareFootage}
+        Length: ${height}
+        Width: ${width}
+        Order Price: ${totalToAdd}
+        `;
+    }
+    textArea.rows = 10;
+    textArea.cols = 30;
+    textArea.disabled = true;
+    textArea.classList.add('quote-text-area');
+    finalQuote.querySelector(".quotelist").appendChild(textAreaWrapper);
+    textAreaWrapper.appendChild(closeBtn);
+    textAreaWrapper.appendChild(textArea);
+    
+    activateCloseBtns();
+    // Remove empty cart alert
+    if($(".textareawrapper").length){
+      $(".empty-cart").hide();
+    }
+  } else {
 
- runningTotalNumber.innerHTML = runningTotal.reduce((a, b) => a + b, 0).toFixed(2);
- textAreaWrapper.classList.add('textareawrapper');
- $(textAreaWrapper).attr('data-totalWithSetupFee', totalToAdd);
- closeBtn.classList.add('close');
- closeBtn.innerHTML = '✖';
- textArea.setAttribute("name", activeTab.textContent);
- 
- if(printedShirtsSelected){
-   
-   textArea.textContent = `
-   Category: ${activeTab.textContent}
-   Amount: ${amount}
-   Print Areas: ${printAreas.split("_")[0]}
-     Order Price: ${totalToAdd}
-     `;
-     
-   } else {
-     textArea.textContent = `
-     Category: ${activeTab.textContent}
-     Amount: ${amount}
-     Square Footage: ${squareFootage}
-     Length: ${height}
-     Width: ${width}
-     Order Price: ${totalToAdd}
-     `;
- }
- textArea.rows = 10;
- textArea.cols = 30;
- textArea.disabled = true;
- textArea.classList.add('quote-text-area');
- finalQuote.querySelector(".quotelist").appendChild(textAreaWrapper);
- textAreaWrapper.appendChild(closeBtn);
- textAreaWrapper.appendChild(textArea);
- 
- activateCloseBtns();
- // Remove empty cart alert
- if($(".textareawrapper").length){
-   $(".empty-cart").hide();
- }
+  }
 };
+
+function showAlert(message){
+  $(".error-message").text = message;
+  $(".fullscreen-alert").fadeIn()
+}
 
 function activateCloseBtns(){
  let closeBtns = finalQuote.querySelectorAll('.close');
