@@ -283,7 +283,7 @@ function addToFinalQuote() {
       $(".empty-cart").hide();
     }
   } else {
-
+    showAlert("Please complete all details before adding to cart");
   }
 };
 
