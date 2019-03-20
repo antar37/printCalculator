@@ -288,7 +288,7 @@ function addToFinalQuote() {
 };
 
 function showAlert(message){
-  $(".error-message").text = message;
+  $("#errorMessage").text(message);
   $(".fullscreen-alert").fadeIn()
 }
 
