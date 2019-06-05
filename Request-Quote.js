@@ -8,32 +8,32 @@ const printSettings = {
    maxHeight: 60,
    minWidth: 0,
    minHeight: 0,
-   setupCostPerItem: 15
+   setupCostPerItem: 16
  },
  "Stickers": {
    maxWidth: 12,
    minWidth: 0,
    maxHeight: 12,
    minHeight: 0,
-   setupCostPerProject: 15
+   setupCostPerProject: 16
  },
  "Decals": {
    maxWidth: 60,
    minWidth: 12,
    maxHeight: 60,
    minHeight: 12,
-   setupCostPerProject: 15
+   setupCostPerProject: 16
  },
  "Large Format Prints": {
    minWidth: 36,
    minHeight: 36,
-   setupCostPerProject: 15
+   setupCostPerProject: 16
  },
  "Window Clings": {
    maxWidth: 60,
    minWidth: 0,
    minHeight: 0,
-   setupCostPerProject: 15
+   setupCostPerProject: 16
  },
  "Printed Shirts": {
    setupCostPerProject: 0
@@ -43,14 +43,14 @@ const printSettings = {
    minWidth: 0,
    maxHeight: 96,
    minHeight: 0,
-   setupCostPerProject: 15
+   setupCostPerProject: 16
  },
  "Signage": {
    maxWidth: 48,
    minWidth: 0,
    maxHeight: 96,
    minHeight: 0,
-   setupCostPerProject: 15
+   setupCostPerProject: 16
  }
 }
 
